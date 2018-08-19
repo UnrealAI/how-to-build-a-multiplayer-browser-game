@@ -8,7 +8,7 @@ let movement = {
 };
 
 let saber = {
-  arc: 0 // 0-359
+  arc: 0, // 0-359
   strength: 1 // 0-150
 };
 
