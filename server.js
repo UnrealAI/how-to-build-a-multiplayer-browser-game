@@ -64,8 +64,7 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function(){
     console.log('user disconnected');
     var player = players[socket.id] || {};
-    player.x = 0
-    player.y = 0
+    player.disconnect = true
   });
 });
 
