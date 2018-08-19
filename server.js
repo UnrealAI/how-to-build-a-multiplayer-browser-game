@@ -68,11 +68,11 @@ io.on('connection', function(socket) {
   });
 });
 io.attach(server, {
-  pingInterval: 10000,
+  pingInterval: 1000,
   pingTimeout: 3000,
   cookie: false
 });
 
 setInterval(function() {
   io.sockets.emit('state', players);
-}, 1000 / 60);
+}, 1000 / 60); // This is in milliseconds eg. "1000" is 1 second.
