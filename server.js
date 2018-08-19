@@ -1,11 +1,11 @@
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var socketIO = require('socket.io');
+let express = require('express'),
+    http = require('http'),
+    path = require('path'),
+    socketIO = require('socket.io');
 
-var app = express();
-var server = http.Server(app);
-var io = socketIO(server);
+let app = express(),
+    server = http.Server(app),
+    io = socketIO(server);
 
 app.set('port', 5000);
 app.use('/static', express.static(__dirname + '/static'));
@@ -19,13 +19,14 @@ server.listen(5000, function() {
   console.log('Starting server on port 5000');
 });
 
-var canvasBound = {}
-canvasBound.min_x = 0
-canvasBound.max_x = 800
-canvasBound.min_y = 0
-canvasBound.max_y = 600
+let canvasBound = {
+  min_x : 0,
+  max_x : 800,
+  min_y : 0,
+  max_y : 600
+};
 
-var players = {};
+let players = {};
 io.on('connection', function(socket) {
   socket.on('new player', function() {
     players[socket.id] = {
@@ -69,10 +70,10 @@ io.on('connection', function(socket) {
 });
 io.attach(server, {
   pingInterval: 1000,
-  pingTimeout: 3000,
+  pingTimeout: 1000,
   cookie: false
 });
 
 setInterval(function() {
   io.sockets.emit('state', players);
-}, 1000 / 60); // This is in milliseconds eg. "1000" is 1 second.
+}, 10); // This is in milliseconds eg. "1000" is 1 second.

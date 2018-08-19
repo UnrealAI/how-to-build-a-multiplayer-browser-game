@@ -86,7 +86,7 @@ socket.on('state', function(players) {
       // context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
       const img = new Image();
       img.src = "https://banner2.kisspng.com/20171220/olw/goat-png-5a3af389c7e615.94348371151381287381888403.jpg";
-      context.drawImage(player.x,player.y,10,10);
+      context.drawImage(img,player.x,player.y,10,10);
       context.fill();
     }
   }
