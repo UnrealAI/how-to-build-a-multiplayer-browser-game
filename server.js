@@ -75,4 +75,4 @@ io.attach(server, {
 
 setInterval(function() {
   io.sockets.emit('state', players);
-}, 100); // This is in milliseconds eg. "1000" is 1 second.
+}, 50); // This is in milliseconds eg. "1000" is 1 second.
