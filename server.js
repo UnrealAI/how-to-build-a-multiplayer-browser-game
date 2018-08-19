@@ -64,9 +64,11 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function(){
     console.log('user disconnected');
     var player = players[socket.id] || {};
+    pingTimeout(3000)
     player.disconnect = true
   });
 });
+
 
 setInterval(function() {
   io.sockets.emit('state', players);
