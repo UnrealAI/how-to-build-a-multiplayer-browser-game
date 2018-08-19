@@ -40,7 +40,6 @@ io.on('connection', function(socket) {
     }
     if (data.up) {
       player.y -= 5;
-
     }
     if (data.right) {
       player.x += 5;
@@ -61,6 +60,12 @@ io.on('connection', function(socket) {
       player.y = canvasBound.min_y;
     }
 
+  });
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+    var player = players[socket.id] || {};
+    player.x = 0
+    player.y = 0
   });
 });
 
