@@ -20,12 +20,18 @@ server.listen(5000, function() {
   console.log('Starting server on port 5000');
 });
 
+var canvasBound = {}
+canvasBound.min_x = 0
+canvasBound.max_x = 900
+canvasBound.min_y = 0
+canvasBound.max_y = 900
+
 var players = {};
 io.on('connection', function(socket) {
   socket.on('new player', function() {
     players[socket.id] = {
-      x: 300,
-      y: 300
+      x: 450,
+      y: 450
     };
   });
   socket.on('movement', function(data) {
@@ -35,6 +41,7 @@ io.on('connection', function(socket) {
     }
     if (data.up) {
       player.y -= 5;
+
     }
     if (data.right) {
       player.x += 5;
@@ -42,6 +49,19 @@ io.on('connection', function(socket) {
     if (data.down) {
       player.y += 5;
     }
+    if (player.x <= canvasBound.min_x - 10){
+      player.x = canvasBound.max_x
+    }
+    if (player.x >= canvasBound.max_x + 10){
+      player.x = canvasBound.min_x
+    }
+    if (player.y <= canvasBound.min_y - 10){
+      player.y = canvasBound.max_y;
+    }
+    if (player.y >= canvasBound.max_y + 10){
+      player.y = canvasBound.min_y;
+    }
+
   });
 });
 

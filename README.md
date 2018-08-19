@@ -4,3 +4,6 @@ game. Read about it [here](https://medium.com/@omgimanerd/how-to-build-a-multipl
 
 ## Creators
 Alvin Lin (omgimanerd)
+Jeffery Do (jeffery-do)
+Jordan Levy (JordanLevy99)
+Joshua Levy (jlevy44)
