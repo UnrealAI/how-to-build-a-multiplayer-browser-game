@@ -1,4 +1,3 @@
-// Dependencies.
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -22,9 +21,9 @@ server.listen(5000, function() {
 
 var canvasBound = {}
 canvasBound.min_x = 0
-canvasBound.max_x = 900
+canvasBound.max_x = 800
 canvasBound.min_y = 0
-canvasBound.max_y = 900
+canvasBound.max_y = 600
 
 var players = {};
 io.on('connection', function(socket) {
